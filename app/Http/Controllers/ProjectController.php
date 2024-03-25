@@ -50,30 +50,41 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        //
+        return view('pages.dashboard.show', compact('project'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Project $project)
+    public function edit(string $id)
     {
-        //
+        $project = Project::findOrFail($id);
+
+        return view('pages.dashboard.edit', compact('project'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateProjectRequest $request, Project $project)
+    public function update(UpdateProjectRequest $request, string $id)
     {
-        //
+        $formData = $request->all();
+
+        $comic = Project::find($id);
+        $comic->update($formData);
+
+        return redirect()->route('pages.dashboard.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Project $project)
+    public function destroy(string $id)
     {
-        //
+        $project = Project::find($id);
+
+        $project->delete();
+
+        return redirect()->route('pages.dashboard.index');
     }
 }
