@@ -13,7 +13,9 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        //
+        $project = Project::all();
+
+        return view('pages.dashboard.index', compact('project'));
     }
 
     /**
@@ -21,7 +23,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.dashboard.create');
     }
 
     /**
@@ -29,7 +31,18 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        //
+
+        $val_data = $request->validated();
+
+        //generiamo lo slug in modo dinamico
+        $slug = Project::generateSlug($request->title);
+
+        $val_data['slug'] = $slug;
+
+
+        $new_project = Project::create($val_data);
+
+        return redirect()->route('pages.dashboard.index');
     }
 
     /**
