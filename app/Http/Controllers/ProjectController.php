@@ -70,8 +70,9 @@ class ProjectController extends Controller
     {
         $formData = $request->all();
 
-        $comic = Project::find($id);
-        $comic->update($formData);
+        $project = Project::find($id);
+
+        $project->update($formData);
 
         return redirect()->route('pages.dashboard.index');
     }

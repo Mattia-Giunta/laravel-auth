@@ -34,7 +34,7 @@ Route::middleware('auth')
     ->name('dashboard.')
     ->group(function () {
 
-    //localhost:8000/dashboard/posts
+    //localhost:8000/dashboard/project
     Route::resource('project', ProjectController::class);
 
 });

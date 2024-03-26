@@ -29,7 +29,15 @@
 
             <div class="mb-3">
                 <label for="content" class="form-label">Content</label>
-                <textarea class="form-control" name="content" id="content" rows="3"></textarea>
+                <textarea
+                class="form-control
+                        @error('content')
+                            is-invalid
+                        @enderror"
+                name="content"
+                id="content"
+                rows="3"
+                ></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary">Crea</button>

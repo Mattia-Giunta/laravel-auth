@@ -5,8 +5,9 @@
 
         <h1>Modifica progetto</h1>
 
-        <form action=" {{ route('dashboard.project.store') }} " method="POST">
+        <form action=" {{ route('dashboard.project.update', $project->id) }} " method="POST">
             @csrf
+            @method('PUT')
 
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
@@ -35,7 +36,7 @@
                 name="content"
                 id="content"
                 rows="3"
-                value="{{ old('content') ?? $project->content }}"></textarea>
+                {{ old('content') ?? $project->content }}></textarea>
             </div>
 
             <button type="submit" class="btn btn-primary">Crea</button>
