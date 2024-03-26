@@ -5,7 +5,7 @@
 
         <h1>Modifica progetto</h1>
 
-        <form action=" {{ route('dashboard.project.update', $project->id) }} " method="POST">
+        <form action=" {{ route('dashboard.project.update', $projects->id) }} " method="POST">
             @csrf
             @method('PUT')
 
@@ -19,7 +19,7 @@
                         @enderror"
                     name="title"
                     id="title"
-                    value="{{ old('title') ?? $project->title }}"
+                    value="{{ old('title') ?? $projects->title }}"
 
                 />
                 @error('title')
@@ -31,12 +31,7 @@
 
             <div class="mb-3">
                 <label for="content" class="form-label">Content</label>
-                <textarea
-                class="form-control"
-                name="content"
-                id="content"
-                rows="3"
-                {{ old('content') ?? $project->content }}></textarea>
+                <textarea class="form-control" name="content" id="content" rows="3">{{ old('content') ?? $projects->content }}</textarea>
             </div>
 
             <button type="submit" class="btn btn-primary">Crea</button>

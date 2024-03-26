@@ -18,7 +18,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($project as $item)
+                    @foreach ($projects as $item)
                     <tr class="">
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->title }}</td>

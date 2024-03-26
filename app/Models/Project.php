@@ -17,6 +17,8 @@ class Project extends Model
         'slug'
     ];
 
+    // protected $table = "projects";
+
     public static function generateSlug($title)
     {
         return Str::slug($title, '-');

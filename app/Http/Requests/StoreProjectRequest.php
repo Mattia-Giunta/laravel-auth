@@ -22,7 +22,7 @@ class StoreProjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title' => ['required', 'unique:posts', 'max:150'],
+            'title' => ['required', 'max:150'],
             'content' => ['nullable']
         ];
     }
