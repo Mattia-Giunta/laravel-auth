@@ -5,7 +5,7 @@
 
         <h1>Aggiungi un nuovo progetto</h1>
 
-        <form action=" {{ route('dashboard.project.store') }} " method="POST">
+        <form action=" {{ route('dashboard.project.store') }} " method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-3">

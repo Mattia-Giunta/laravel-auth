@@ -14,6 +14,7 @@
                         <th scope="col">Title</th>
                         <th scope="col">Content</th>
                         <th scope="col">Slug</th>
+                        <th scope="col">Cover</th>
                         <th scope="col">Actions</th>
                     </tr>
                 </thead>
@@ -24,6 +25,7 @@
                         <td>{{ $item->title }}</td>
                         <td>{{ $item->content }}</td>
                         <td>{{ $item->slug }}</td>
+                        <td></td>
                         <td>
                             <a class="btn btn-primary" href=" {{ route('dashboard.project.edit', $item->id ) }} ">
                                 Modifica

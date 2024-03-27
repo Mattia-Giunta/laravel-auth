@@ -5,7 +5,7 @@
 
         <h1>Modifica progetto</h1>
 
-        <form action=" {{ route('dashboard.project.update', $projects->id) }} " method="POST">
+        <form action=" {{ route('dashboard.project.update', $projects->id) }} " method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
