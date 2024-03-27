@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -36,9 +37,16 @@ class ProjectController extends Controller
 
         //generiamo lo slug in modo dinamico
         $slug = Project::generateSlug($request->title);
-
         $val_data['slug'] = $slug;
 
+        //gestione immagine
+        if( $request->hasFile('cover_image') ){
+
+            $path = Storage::disk('public')->put( 'project_images', $request->cover_image );
+
+
+            $val_data['cover_image'] = $path;
+        }
 
         $new_project = Project::create($val_data);
 
@@ -48,9 +56,9 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Project $projects)
+    public function show(Project $project)
     {
-        return view('pages.dashboard.show', compact('projects'));
+        return view('pages.dashboard.show', compact('project'));
     }
 
     /**
@@ -72,6 +80,16 @@ class ProjectController extends Controller
 
         $projects = Project::find($id);
 
+        if( $request->hasFile('cover_image') ){
+            if( $projects->cover_image ){
+                Storage::delete($projects->cover_image);
+            }
+
+            $path = Storage::disk('public')->put('projects_images', $request->cover_image);
+
+            $formData['cover_image'] = $path;
+        }
+
         $projects->update($formData);
 
         return redirect()->route('dashboard.project.index');
@@ -83,6 +101,10 @@ class ProjectController extends Controller
     public function destroy(string $id)
     {
         $projects = Project::find($id);
+
+        if( $projects->cover_image ){
+            Storage::delete($projects->cover_image);
+        }
 
         $projects->delete();
 

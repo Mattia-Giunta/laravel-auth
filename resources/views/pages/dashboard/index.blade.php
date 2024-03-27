@@ -22,10 +22,14 @@
                     @foreach ($projects as $item)
                     <tr class="">
                         <td>{{ $item->id }}</td>
-                        <td>{{ $item->title }}</td>
+                        <td>
+                            <a href=" {{ route('dashboard.project.show', $item->id) }} ">
+                                {{ $item->title }}
+                            </a>
+                        </td>
                         <td>{{ $item->content }}</td>
                         <td>{{ $item->slug }}</td>
-                        <td></td>
+                        <td>{{ ($item->cover_image ? 'si' : 'no')}}</td>
                         <td>
                             <a class="btn btn-primary" href=" {{ route('dashboard.project.edit', $item->id ) }} ">
                                 Modifica

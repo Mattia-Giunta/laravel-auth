@@ -34,7 +34,7 @@
                 @if( $projects->cover_image )
                 <img
                     src="{{ asset('/storage/' . $projects->cover_image) }}"
-                    alt="{{ $project->title }}">
+                    alt="{{ $projects->title }}">
                 @endif
 
                 <div class="mt-3">
