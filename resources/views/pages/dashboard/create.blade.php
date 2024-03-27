@@ -28,6 +28,17 @@
             </div>
 
             <div class="mb-3">
+                <input
+                type="file"
+                name="cover_image"
+                id="cover_image"
+                class="form-control
+                    @error('cover_image')
+                        is-invalid
+                    @enderror">
+            </div>
+
+            <div class="mb-3">
                 <label for="content" class="form-label">Content</label>
                 <textarea
                 class="form-control

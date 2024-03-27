@@ -14,7 +14,8 @@ class Project extends Model
     protected $fillable = [
         'title',
         'content',
-        'slug'
+        'slug',
+        'cover_image'
     ];
 
     // protected $table = "projects";
